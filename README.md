@@ -7,7 +7,7 @@ Therefore we developed a system that takes care of all regular tasks that are in
 Recommender algorithms can be added to the system internally, or plugged in comfortably by using our API.
 
 # Get Started
-### Step 0. Configuration
+### Step 0. Requirements
    You will need Java 6+, a servlet container (eg. Tomcat) and a database (eg. MySQL) to run the system.
    
 ### Step 1. Configuration
@@ -16,7 +16,7 @@ Recommender algorithms can be added to the system internally, or plugged in comf
 
 ### Step 2. Database schema
 
-   The application requires access to a certain table structure in your specified database. The DDL is included in the file _DB`_`INIT.sql_. Simply import it to the database given in _app.properties_ from before. This will in addition create an initial administrator account (username: admin, password: admin).
+   The application requires access to a certain table structure in your specified database. The DDL is included in the file _DB_INIT.sql_. Simply import it to the database given in _app.properties_ from before. This will in addition create an initial administrator account (username: admin, password: admin).
    
    
 # Abous Us
