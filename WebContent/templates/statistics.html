@@ -1,0 +1,107 @@
+<!-- Content of the statistics tab -->
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#statsUser" data-toggle="tab">User</a></li>
+  <li><a href="#statsRec" id="recTabBtn" data-toggle="tab">Recommender</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="statsUser">
+  <div class="row">
+      <div class="col-sm-3 stats">
+         <p class="text-muted">Users</p>
+         <span class="statsValue"><%= numUsers %></span>
+      </div>
+      <div class="col-sm-2 stats">
+         <p class="text-muted">Last.fm Users</p>
+         <span class="statsValue"><%= numberOfLastFmUsers %></span>
+      </div>
+       <div class="col-sm-3 stats">
+         <p class="text-muted">&Oslash; Composition Changes</p>
+         <span class="statsValue"><%= behaviorChanged %></span>
+      </div>
+      <div class="col-sm-fit stats" style="padding-right: 19px;">
+         <p class="text-muted">&Oslash; Recommender Changes</p>
+         <span class="statsValue"><%= optChanged %></span>
+      </div>
+  </div>
+
+    <div class="row">
+      <div class="stats col-sm-6">
+        <p class="text-muted">Age Distribution </p>
+        <div id='ageDist'></div>
+      </div>
+      <div class="stats col-sm-fit" style="padding-right: 43px;">
+        <p class="text-muted">Gender Distribution </p>
+        <div id='genderDist'></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="stats col-sm-6">
+        <p class="text-muted">Language Distribution </p>
+        <div id='langDist'></div>
+      </div>
+      <div class="stats col-sm-fit" style="padding-right: 43px;">
+        <p class="text-muted">Avg. Time Spent On Site </p>
+        <div id='visitDist'></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="stats col-sm-12">
+        <p class="text-muted">#Visitors Over Time </p>
+        <div id='visitStats'></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="stats col-sm-12">
+        <p class="text-muted">#Ratings Over Time </p>
+        <div id='ratingStats'></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="statsRec">
+<div class="row">
+      <div class="col-sm-3 stats">
+         <p class="text-muted">Available Recommenders</p>
+         <span class="statsValue"><%= numberOfRecommenders %></span>
+      </div>
+      <div class="col-sm-3 stats">
+         <p class="text-muted">Created Recommendations</p>
+         <span class="statsValue"><%= numberOfRecommendations %></span>
+      </div>
+      <div class="col-sm-3 stats">
+         <p class="text-muted">Rated Recommendations</p>
+         <span class="statsValue"><%= numberOfRatings %></span>
+      </div>
+      <div class="col-sm-fit stats" style="padding-right: 65px;">
+         <p class="text-muted">Created Lists</p>
+         <span class="statsValue"><%= numberOfLists %></span>
+      </div>
+  </div>
+
+      <div class="row">
+        <div class="stats col-sm-6">
+        <p class="text-muted">Overall Rating Distribution</p>
+        <div id='ratingDist'></div>
+        </div>
+        <div class="stats col-sm-fit"  style="padding-right: 43px;">
+        <p class="text-muted">Mean Absolute Error</p>
+        <div id='maeDist'></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="stats col-sm-12">
+        <p class="text-muted">#Recommendations Per Recommender</p>
+        <div id='recommendationDist'></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="stats col-sm-12">
+        <p class="text-muted">Rating Distribution Per Recommender</p>
+        <div id='recRatingDist'></div>
+        </div>
+      </div>
+
+  </div>
+</div>

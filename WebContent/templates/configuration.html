@@ -1,0 +1,68 @@
+<div class="titleRect">Add Recommender</div>
+<div class="mainContent">
+	<div class="form-group">
+		<b>Choose Jar:</b> <input type="file" id="filePath">
+	</div>
+	<div class="form-group">
+		<b>Class name:</b> <input type="text" id="className"
+			placeholder="Classpath of the recommender class (ex. java.lang.String)">
+	</div>
+	<div class="btn btn-default btn-sm" id="uploadJar">Add</div>
+	<br></br>
+	<div id="messageUploadJar"></div>
+</div>
+
+<div class="hline-condensed"></div>
+<div class="titleRect">Recommender Status</div>
+<div class="mainContent">
+	<% _.each(config, function(conf){ %> <b><%= conf.name %> </b> <span
+		class="pull-right"> <% if(conf.filepath){ %>
+		<div class="btn btn-xs btn-default" id="updateBtn"
+			data-recid="<%= conf.id %>">
+			Update <i class="fa fa-level-up"></i>
+		</div> <%} %>
+		<div class="btn btn-xs btn-danger" id="removeBtn"
+			data-recid="<%= conf.id %>">
+			<i class="fa fa-trash"></i>
+		</div>
+	</span> <br>(<%= conf.classpath %>) <br>
+	<div class="radio-inline">
+		<label> <input class="configItem" type="radio"
+			name="<%= conf.id %>" value="1"> Active
+		</label>
+	</div>
+	<div class="radio-inline">
+		<label> <input class="configItem" type="radio"
+			name="<%= conf.id %>" value="0"> Inactive
+		</label>
+	</div>
+	<div class="hline-condensed"></div>
+	<br> <% }); %> <br> <a class="btn btn-default btn-sm"
+		id="saveConfiguration">Save</a> <br></br>
+	<div id="messageConfiguration"></div>
+</div>
+
+<!-- Update Recommender Dialog -->
+<div id="updateRecommenderDialog" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="close" data-dismiss="modal">&times;</div>
+				<h5 class="modal-title">Update Recommender</h5>
+			</div>
+			<div class="modal-body">
+				<div id="updateRecommenderId" style="display: none;"></div>
+				<div class="form-group">
+					<b>Choose Jar:</b> <input type="file" id="updateFilePath">
+				</div>
+				<div class="form-group">
+					<b>Class name:</b> <input type="text" id="updateClassName"
+						placeholder="Classpath of the recommender class (ex. java.lang.String)">
+				</div>
+				<div class="btn btn-default btn-sm" id="updateRecommenderBtn">Update</div>
+				<br></br>
+				<div id="messageUpdateRecommender"></div>
+			</div>
+		</div>
+	</div>
+</div>

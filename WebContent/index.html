@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MuSe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Music Recommender Research Project: MuSe">
+
+<!-- Styles -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+
+<!-- Scripts -->
+<script data-main="js/main" src="js/libs/require/require.js"></script>
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="img/muse.png">
+</head>
+
+<body>
+	<!-- Header -->
+	<nav class="navbar navbar-default navbar-static-top">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-toggle" data-toggle="collapse"
+			data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</div>
+		<div id="header">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"><img src="img/headingAlt.png"
+					alt=""></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li id="navrecommender" style="display: none;"><a
+						href="#recommender"> Recommender</a></li>
+					<li id="navoptions" style="display: none;"><a href="#options">
+							Settings</a></li>
+					<li class="dropdown" id="userPill"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"><i
+							class="fa fa-cog"></i> <b class="caret"></b> </a>
+						<ul class="dropdown-menu">
+							<li class="menu-header">User</li>
+							<li id="profilePill" style="display: none;"><a
+								href="#profile">Profile</a></li>
+							<li id="loginPill"><a href="#loginDialog"
+								data-toggle="modal">Sign in</a></li>
+							<li id="logoutPill" style="display: none;"><a href="#home">Logout</a></li>
+							<li id="adminDivider" class="divider" style="display: none;"></li>
+							<li id="adminHeader" class="menu-header" style="display: none;">Admin</li>
+							<li id="adminConfig" style="display: none;"><a
+								href="#configuration">Configuration</a></li>
+							<li id="adminStats" style="display: none;"><a
+								href="#statistics">Monitoring</a></li>
+							<li id="adminLog" style="display: none;"><a href="#log">Log</a></li>
+							<li id="adminEval" style="display: none;"><a
+								href="#evaluation">Evaluation</a></li>
+							<li class="divider"></li>
+							<li class="menu-header">Help</li>
+							<li><a href="#help">FAQ</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<!-- Home View-->
+		<div class="content" id="homeview" style="display: none;">
+			<!-- Introduction stuff -->
+			<div class="jumbotron">
+				<h1>Discover great music.</h1>
+
+				<p class="lead">Find songs and artists you will love!</p>
+				<div id="loginLink">
+					<a href="#loginDialog" class="btn btn-holo" role="button"
+						data-toggle="modal">Sign in </a> <a href="#registerDialog"
+						class="btn btn-primary" role="button" data-toggle="modal">Register</a>
+				</div>
+			</div>
+
+			<div class="hline"></div>
+			<center>
+				<br>
+				<div class="lead">New here? Get started.</div>
+			</center>
+
+			<div class="media" style="border: 0px;">
+				<div class="alert alert-info" id="mobileAlert"
+					style="display: none; text-align: center;">
+					<b>Important:</b> Playing songs on mobile devicese requires Spotify
+					Premium.
+				</div>
+				<br> <span class="pull-left"> <img src="img/person.png"
+					class="img-circle" style="border: 2px solid #428bca; padding: 5px;">
+				</span>
+				<div class="media-body">
+					<h4 class="media-heading">Register</h4>
+					<p>To get to know your taste we need some information about
+						you. When creating an account consider to provide your Last.fm
+						name to get even better recommendations.</p>
+					<p>
+						If you have any questions take a look at our <a href="#help">FAQ</a>
+						section.
+					</p>
+				</div>
+			</div>
+
+			<div class="media">
+				<span class="pull-left"> <img src="img/music.png"
+					class="img-circle" style="border: 2px solid #428bca; padding: 5px;">
+				</span>
+				<div class="media-body">
+					<h4 class="media-heading">Listen &amp; Rate</h4>
+					<p>
+						Get lists of recommended songs and listen to them right away. To
+						get the best MuSe experience we suggest to use <a
+							href="https://www.spotify.com" target="_blank">Spotify</a> in
+						order to listen to the songs.
+					</p>
+
+					<p>By rating songs you will get better recommendations the next
+						day, as we recompute your taste each night.</p>
+				</div>
+			</div>
+
+			<div class="media">
+				<span class="pull-left"> <img src="img/lightbulp.png"
+					class="img-circle"
+					style="border: 2px solid #428bca; padding: 10px;">
+				</span>
+				<div class="media-body">
+					<h4 class="media-heading">Get Recommendations</h4>
+					<p>After rating enough songs you will start to discover great
+						songs and artists. Since we get to know your taste better and
+						better you will get recommendations that are directly tailored to
+						you.</p>
+
+					<p>That's it. We hope you enjoy MuSe!</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Recommendation View -->
+		<div class="content" id="recommenderview" style="display: none;">
+			<div class="title">
+				Your <b>recommendations</b>
+			</div>
+
+			<div class="help pull-left" id="recInfo"
+				data-content="
+         &lt;p&gt;Here you get a list of recommended songs. You can listen to the them directly using Spotify.&lt;/p&gt;
+         &lt;p&gt;Afterwards you can rate the different songs by the following rating scheme:&lt;/p&gt;
+         &lt;p class='text-danger'&gt;&lt;i class='fa fa-thumbs-o-down'&gt;&lt;/i&gt; No, that's not my taste.&lt;/p&gt;
+         &lt;p class='text-primary'&gt; &lt;i class='fa fa-thumbs-o-up'&gt;&lt;/i&gt; Hey, that song is good. &lt;/p&gt;
+         &lt;p class='text-success'&gt; &lt;i class='fa fa-heart'&gt;&lt;/i&gt; Wow, I really like that song!&lt;/p&gt;
+         &lt;p&gt;By rating songs you will get better recommendations each day.
+     You have to rate at least half of the list to get a new one.&lt;/p&gt;"
+				data-placement="bottom" data-html="true">Need help?</div>
+			<div id="recommenderContent"></div>
+		</div>
+		<!--  Options View -->
+		<div class="content" id="optionsview" style="display: none;"></div>
+		<!-- Help View -->
+		<div class="content" id="helpview" style="display: none;"></div>
+		<!-- Profile View -->
+		<div class="content" id="profileview" style="display: none;"></div>
+		<!-- Configuration View -->
+		<div class="content" id="configurationview" style="display: none;">
+			<center>
+				<div class="title">
+					Recommender <b>Configuration</b>
+				</div>
+			</center>
+			<div id="configurationContent"></div>
+		</div>
+		<!-- Statistics View -->
+		<div class="content" id="statisticsview" style="display: none;">
+			<div class="title" style="margin-bottom: -1px;">
+				<b>Monitoring</b>
+			</div>
+			<div class="well">
+				<div class="input-group"
+					style="display: inline-table; width: 210px; padding-right: 20px;">
+					<span class="input-group-addon">From </span> <input type="date"
+						class="form-control" id="rangeFrom"
+						style="display: inline; width: initial;">
+				</div>
+				<div class="input-group"
+					style="display: inline-table; width: 210px;">
+					<span class="input-group-addon">To </span> <input type="date"
+						class="form-control" id="rangeTo"
+						style="display: inline; width: initial;">
+				</div>
+				<div class="btn btn-default btn-sm" id="rangeBtn">Submit</div>
+			</div>
+			<div id="statisticsContent"></div>
+		</div>
+
+		<!-- Log View -->
+		<div class="content" id="logview" style="display: none;">
+			<div class="title">
+				<b>Log</b>
+			</div>
+			<div id="logContent" class="well log"></div>
+		</div>
+
+		<!-- Evaluation View -->
+		<div class="content" id="evaluationview" style="display: none;">
+			<div class="title">
+				Evaluation <b>Center</b>
+			</div>
+			<div id="evaluationContent"></div>
+		</div>
+
+		<!-- Evaluation Details View -->
+		<div class="content" id="evaldetailsview" style="display: none;">
+			<div class="title">
+				Evaluation <b>Details</b>
+			</div>
+			<a class="help pull-left" href="#evaluation">&larr; All</a>
+			<div id="evaldetailsContent"></div>
+		</div>
+	</div>
+
+	<!-- footer -->
+	<div class="footer">
+		<a href="impressum.html" target="_blank">Impressum </a> • <a
+			href="terms.html" target="_blank">Terms </a> • <a
+			href="http://dbis.informatik.uni-freiburg.de/forschung/projekte/MusicRecommender"
+			target="_blank">About Us</a><br> Music Recommendation Management
+		System (MRMS)<br> Designed and Developed at University of
+		Freiburg <br> Code licensed under Apache License v2.0
+	</div>
+
+	<!-- Login Dialog -->
+	<div id="loginDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="close" data-dismiss="modal">&times;</div>
+					<h5 class="modal-title">Sign in</h5>
+				</div>
+				<div class="modal-body">
+					<p class="datenschutz">Auf dieser Seite können Sie sich
+						anmelden.</p>
+					<p class="datenschutz">
+						<a href="terms.html" target="_blank">Informationen zur
+							Datenverarbeitung</a>
+					</p>
+					<br>
+					<div id="loginForm">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Username"
+								name="username" autofocus>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control"
+								placeholder="Password" name="password">
+						</div>
+						<div class="btn btn-default btn-sm" id="loginButton">Sign in</div>
+						<div class="btn btn-link btn-sm" id="forgotButton">Forgot
+							Password?</div>
+					</div>
+					<br>
+					<div id="loginMessage"></div>
+					<div id="loadLogin"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Evaluation Invite Dialog -->
+	<div id="inviteEvalDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="close" data-dismiss="modal">&times;</div>
+					<h5 class="modal-title">Evaluation Invite</h5>
+				</div>
+				<div class="modal-body">
+					<div style="text-align: center">
+						<img src="img/people.png" alt="">
+						<h4>We want you!</h4>
+					</div>
+					<p>Hereby you are invited to take part in an Evaluation phase.</p>
+					<p>In an evaluation we are testing newly invented
+						recommendation techniques to provide even better recommendations
+						to you in the future.</p>
+					<p>Your feedback will help us improve and measure the
+						successfulness of our techniques. During the evaluation you will
+						be using non-public recommenders and your options to change
+						recommenders are therefore disabled for that time frame.</p>
+					<p>Want to take part?</p>
+					<div class="btn btn-primary btn-sm" id="inviteEvalButtonYes">Yes</div>
+					<div class="btn btn-default btn-sm" id="inviteEvalButtonNo">No</div>
+					<br> <br>
+					<div id="inviteEvalMessage"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Recover Password -->
+	<div id="recoverDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="close" data-dismiss="modal">&times;</div>
+					<h5 class="modal-title">Recover Password</h5>
+				</div>
+				<div class="modal-body">
+					<div id="recoverForm">
+						<p>
+							<b>1.</b> Enter your username and receive a security token by
+							mail.
+						</p>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Username"
+								name="username" autofocus>
+						</div>
+
+						<div class="btn btn-default btn-sm" id="forgotPasswordButton">Submit</div>
+						<br></br>
+
+						<p>
+							<b>2.</b> Enter the token you received via mail and your new
+							password.
+						</p>
+						<div class="form-group">
+							<input type="text" class="form-control"
+								placeholder="Security Token" name="token">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control"
+								placeholder="New Password" name="password">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control"
+								placeholder="New Password (Repeat)" name="passwordRepeat">
+						</div>
+
+						<div class="btn btn-default btn-sm" id="recoverButton">Recover</div>
+					</div>
+					<br>
+
+					<div id="loadRecover"></div>
+					<div id="recoverMessage"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Register Dialog -->
+	<div id="registerDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="close" data-dismiss="modal">&times;</div>
+					<h5 class="modal-title">Register</h5>
+				</div>
+				<div class="modal-body">
+					<p class="help-block">
+						Auf dieser Seite können Sie sich registrieren. <span
+							id="registerInfo" class="btn btn-link btn-xs"
+							data-toggle="collapse" data-target="#myDiv"
+							data-open-text="Closed">+ Mehr Informationen</span>
+					</p>
+					<div class="span4 collapse" id="myDiv">
+						<!-- Datenschutz -->
+						<p class="datenschutz">Here goes privacy information.</p>
+						<br>
+					</div>
+					<!-- Ask for the name-->
+					<div class="form-group">
+						<input class="form-control" type="text" placeholder="Username"
+							name="name" autofocus>
+					</div>
+
+					<!-- Ask for the password -->
+					<div class="row">
+						<div class="form-group col-sm-6"
+							style="padding: 0px; padding-right: 5px;">
+							<input type="password" class="form-control"
+								placeholder="Password" name="password" />
+						</div>
+						<div class="form-group col-sm-6" style="padding: 0px;">
+							<input type="password" class="form-control"
+								placeholder="Repeat password" name="passwordRepeat" />
+						</div>
+					</div>
+
+					<!-- Ask for the email -->
+					<div class="form-group">
+						<input type="email" class="form-control" placeholder="E-Mail"
+							name="email" />
+					</div>
+
+					<!-- Ask for the year of birth -->
+					<div class="row">
+						<div class="form-group col-sm-6"
+							style="padding: 0px; padding-right: 5px;">
+							<select class="form-control" name="birthyear">
+								<option value="" disabled selected>Year of Birth</option>
+								<option value="1950">1950</option>
+								<option value="1951">1951</option>
+								<option value="1952">1952</option>
+								<option value="1953">1953</option>
+								<option value="1954">1954</option>
+								<option value="1955">1955</option>
+								<option value="1956">1956</option>
+								<option value="1957">1957</option>
+								<option value="1958">1958</option>
+								<option value="1959">1959</option>
+								<option value="1960">1960</option>
+								<option value="1961">1961</option>
+								<option value="1962">1962</option>
+								<option value="1963">1963</option>
+								<option value="1964">1964</option>
+								<option value="1965">1965</option>
+								<option value="1966">1966</option>
+								<option value="1967">1967</option>
+								<option value="1968">1968</option>
+								<option value="1969">1969</option>
+								<option value="1970">1970</option>
+								<option value="1971">1971</option>
+								<option value="1972">1972</option>
+								<option value="1973">1973</option>
+								<option value="1974">1974</option>
+								<option value="1975">1975</option>
+								<option value="1976">1976</option>
+								<option value="1977">1977</option>
+								<option value="1978">1978</option>
+								<option value="1979">1979</option>
+								<option value="1980">1980</option>
+								<option value="1981">1981</option>
+								<option value="1982">1982</option>
+								<option value="1983">1983</option>
+								<option value="1984">1984</option>
+								<option value="1985">1985</option>
+								<option value="1986">1986</option>
+								<option value="1987">1987</option>
+								<option value="1988">1988</option>
+								<option value="1989">1989</option>
+								<option value="1990">1990</option>
+								<option value="1991">1991</option>
+								<option value="1992">1992</option>
+								<option value="1993">1993</option>
+								<option value="1994">1994</option>
+								<option value="1995">1995</option>
+								<option value="1996">1996</option>
+								<option value="1997">1997</option>
+								<option value="1998">1998</option>
+								<option value="1999">1999</option>
+								<option value="2000">2000</option>
+							</select>
+						</div>
+
+						<!-- Ask for the gender of the user -->
+						<div class="form-group col-sm-6" style="padding: 0px;">
+							<select class="form-control" name="sex">
+								<option value="" disabled selected>Gender</option>
+								<option>Male</option>
+								<option>Female</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- Ask for languages the person speaks/understands -->
+					<div class="form-group">
+
+						<div id="langCheckBox">
+							<label style="color: #999;">Languages</label> <br> <label
+								class="checkbox-inline"> <input type="checkbox"
+								readonly="readonly" checked="checked" name="langs"
+								value="English" onclick="return(false);"> English
+							</label><label class="checkbox-inline"> <input type="checkbox"
+								name="langs" value="German"> German
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								name="langs" value="French"> French
+							</label> <label class="checkbox-inline"> <input type="checkbox"
+								name="langs" value="Spanish"> Spanish
+							</label><label class="checkbox-inline"> <input type="checkbox"
+								name="langs" value="Italian"> Italian
+							</label>
+						</div>
+
+						<p class="help-block">Used to create recommendations. It
+							doesn't change the system language.</p>
+					</div>
+
+					<!-- Ask for LastFM account -->
+					<div class="form-group">
+						<input type="text" class="form-control"
+							placeholder="LastFM Username*" name="lfmaccount">
+
+						<p class="help-block">Providing a Last.fm Username (only the
+							name!) will elicit a broader set of recommendation possibilities.</p>
+					</div>
+
+					<p class="datenschutz">
+						<input name="terms" value="agree" type="checkbox"> Ich
+						habe die <a href="terms.html" target="_blank">Informationen
+							zur Datenverarbeitung</a> gelesen und bin mit der beschriebenen
+						Datenverarbeitung einverstanden. Ich weiß, dass ich meine
+						Einwilligung jederzeit widerrufen kann. In diesem Fall kann ich
+						meinen Account über die Profilverwaltung selber löschen.
+					</p>
+					<div class="btn btn-default btn-sm" id="registerButton">Register</div>
+					<br> <br>
+					<div id="registerMessage"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Delete Dialog -->
+	<div id="deleteDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="close" data-dismiss="modal">&times;</div>
+					<h5 class="modal-title">Delete Account</h5>
+				</div>
+				<div class="modal-body">
+					<div id="deleteForm">
+						<input type="password" class="form-control" placeholder="Password"
+							name="passwordDelete"> <br>
+						<div class="btn btn-danger btn-sm" id="deleteButton">Delete</div>
+						<p class="help-block">Caution! This can't be undone.</p>
+					</div>
+					<br>
+
+					<div id="loadDelete"></div>
+					<div id="deleteMessage"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Change Profile -->
+	<div id="changeDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="close" data-dismiss="modal">&times;</div>
+					<h5 class="modal-title">Change Profile</h5>
+				</div>
+				<div class="modal-body">
+					<div id="changeForm" class="form">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="E-Mail"
+								name="email">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control"
+								placeholder="Last.fm Name" name="lfmaccount">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control"
+								placeholder="New Password" name="passwordNew">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control"
+								placeholder="New Password (Repeat)" name="passwordRepeat">
+						</div>
+						<div class="help-block">
+							Simply leave fields empty that you do <b>not</b> want to change.
+						</div>
+						<hr>
+						<div class="form-group">
+							<input type="password" class="form-control"
+								placeholder="Current Password" name="password">
+							<div class="help-block">This is necessary to save your
+								changes.</div>
+						</div>
+						<div class="btn btn-default btn-sm" id="changeButton">Change</div>
+					</div>
+					<br>
+
+					<div id="loadChange"></div>
+					<div id="changeMessage"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Facebook sdk root -->
+	<div id="fb-root"></div>
+</body>
+</html>

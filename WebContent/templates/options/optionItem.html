@@ -1,0 +1,8 @@
+<div class="col-sm-6">
+    <label class='checkbox'>
+        <input type='checkbox' value='<%= ID %>' name='recommenders'>
+        <b><% if(ID == 4 || ID == 5) { %><%= NAME %> - Last.fm required <% } else { %><%= NAME %><% } %></b>
+        <br><%= EXPLANATION %></dd></dl>
+    </label>
+    <div id='<%= ID %>Metric' width='300' height='100'></div>
+</div>

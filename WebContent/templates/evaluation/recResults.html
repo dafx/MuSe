@@ -1,0 +1,44 @@
+<br>
+<i class="fa fa-download"></i> <b>Complete Dataset:</b>
+<a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=rating">Download Track Ratings</a> -
+<a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=list_rating">Download List Ratings</a> -
+<a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=recommender_info">Download Recommender Info</a>
+
+<br>
+<div class="row">
+<div class="stats col-sm-6" style="margin: 10px 0px;">
+  <p class="text-muted">
+    &Oslash; Rating -
+    <a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=avg_group_rating">Download Data</a>
+  </p>
+  <div id='avgGroupResult'></div>
+</div>
+
+<div class="stats col-sm-6" style="margin: 10px 0px;">
+  <p class="text-muted">
+    &Oslash; List Rating - <a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=group_list_rating">Download Data</a>
+  </p>
+  <div id='avgListResult'></div>
+</div>
+</div>
+
+<div class="stats col-sm-12">
+  <p class="text-muted">
+    &Oslash; Rating per Recommender - <a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=avg_recommender_rating">Download Data</a>
+  </p>
+  <div id='avgRecRatingResult'></div>
+</div>
+
+<div class="stats col-sm-12">
+  <p class="text-muted">
+    Mean Absolute Error - <a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=mae">Download Data</a>
+  </p>
+  <div id='maeResult'></div>
+</div>
+
+<div class="stats col-sm-12">
+  <p class="text-muted">
+    Accuracy - <a href="/MuSe/API/getEvaluationData/eval=<%= evalId%>&file=accuracy">Download Data</a>
+  </p>
+  <div id='accuracyResult'></div>
+</div>

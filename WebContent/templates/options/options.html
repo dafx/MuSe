@@ -1,0 +1,43 @@
+<!-- Content of the options tab -->
+<center>
+<div class="title">Your <b>Settings</b></div>
+<div class="titleBorder"></div>
+
+<div class="help pull-left" id="optionsInfo" rel="popover"
+    data-content="
+<p>Here you can choose different recommenders you like to
+    use by checking or unchecking them in the settings.</p>
+    <p>
+    Recommenders are defined by the following characteristics:
+    </p>
+<p><b>Accuracy</b>: Focus on matching your taste.</p>
+<p><b>Novelty:</b> Focus on finding new songs matching your taste. </p>
+<p><b>Diversity:</b> Focus on finding different songs matching your taste. </p>
+<p><b>Serendipity:</b> Focus on finding songs outside of your musical taste you might like.</p>"
+    data-placement="bottom" data-html="true">Need help?</div></center>
+<center>
+    <div id='recSettings' width='300' height='200'></div>
+</center>
+
+<div class="hline"></div>
+<div class="titleRect">List Composition</div>
+
+<div class="settingsContent">
+    <label class="radio"> <input class="optionsBehavior"
+                                 type="radio" name="behavior" id="optionsBehavior1" value="mixed"> <b>Mixed</b><br> Evenly
+        distribute places to each recommender.
+    </label> <label class="radio"> <input class="optionsBehavior"
+                                          type="radio" name="behavior" id="optionsBehavior2"
+                                          value="weighted"> <b>Overall Score</b><br>Only take
+    the best recommendations of all recommenders.
+</label> <label class="radio"> <input class="optionsBehavior"
+                                      type="radio" name="behavior" id="optionsBehavior3"
+                                      value="dynamic"> <b>Dynamic allocation</b> <br>Dynamically
+    allocate the places to the different recommenders.
+</label>
+</div>
+
+<div class="hline"></div>
+<div class="titleRect">Recommenders</div>
+
+<div id="metricList" class="row"></div>

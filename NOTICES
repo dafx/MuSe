@@ -1,0 +1,21 @@
+Copyright (C) 2014 University of Freiburg. Licensed under ApacheV2.
+
+Used Java libraries:
+- Google GSON
+- Oracle Jersey
+- Apache log4j
+- slf4j
+- Oracle JDBC
+- OpenCSV
+- Quartz
+
+Useed JavaScript libraries:
+- Backbone
+- Require
+- Jquery
+- Bootstrap
+- Underscore
+- Highcharts
+
+
+

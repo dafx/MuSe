@@ -1,0 +1,15 @@
+<!-- Content of the profile tab -->
+<center>
+<div class="title">
+   Your <b>Profile</b>
+</div>
+</center>
+<div class="titleRect"><%= name%></div>
+<div class="mainContent">
+<p> <b>E-Mail</b> <br> <%= email %></p>
+<p> <b>Year of Birth</b><br> <%= birthyear %> </p>
+<p> <b>Gender</b><br> <%= sex %></p>
+<p> <b>Last.fm Name</b><br> <% if(lfmaccount) { %><%= lfmaccount %><% } %></p>
+<br> <a class="btn btn-default btn-sm" href="#changeDialog" data-toggle="modal">Change Profile</a>
+<a class="btn btn-link btn-xs pull-right" href="#deleteDialog" data-toggle="modal">Delete Account</a>
+</div>

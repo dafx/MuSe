@@ -1,0 +1,24 @@
+<div id="group<%= numGroup  %>">
+  <div class="panel panel-default row">
+  <div class="panel-heading">Group #<%= numGroup  %></div>
+  <div class="panel-body">
+  <div class="col-sm-8" id="evalRecommenders">
+    <label><b>Recommenders </b></label><br>
+      <% _.each(recommenderList, function(recommender) { %>
+       <label><input type="checkbox" class="evalRecommenders" value="<%= recommender.ID %>"> <%= recommender.NAME %></label>
+      <% }); %>
+      <br><br>
+  </div>
+  <div class="col-sm-3">
+    <label><b>List Composition</b></label>
+    <br>
+    <label><input type="radio" class="evalBehavior" name="evalBehavior<%= numGroup  %>" value="mixed"> Mixed</label>
+    <br>
+    <label><input type="radio" class="evalBehavior" name="evalBehavior<%= numGroup  %>" value="weighted"> Overall Score</label>
+    <br>
+    <label><input type="radio" class="evalBehavior" name="evalBehavior<%= numGroup  %>" value="dynamic"> Dynamic Allocation</label>
+    <br><br>
+  </div>
+  </div>
+</div>
+</div>

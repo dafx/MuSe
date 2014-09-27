@@ -1,0 +1,39 @@
+<label><b>Settings</b></label>
+<ul class="list-group">
+  <li class="list-group-item"><i
+    class="fa fa-list-alt" style="color: #777;"></i> <b>
+      List Composition:</b>
+    <% if(group.behavior === 'mixed'){ %> <%= 'Mixed' %>
+    <%} if(group.behavior === 'weighted') {%><%= 'Overall Score' %>
+    <%} if(group.behavior === 'dynamic') {%><%= 'Dynamic Allocation' %>
+    <%}%></li>
+  <li class="list-group-item"><i class="fa fa-wrench"
+    style="color: #777;"></i> <b> Recommenders:</b> <%
+    _.each(group.recommenders, function(criteria){ %> <%= recommenderNames[criteria].NAME %> <%
+    if (criteria !== _.last(group.recommenders)){ %><%= ", " %><% } %> <%
+    }); %></li>
+</ul>
+<a href="#changeEvalGroupDialog" id="changeEvalGroupButton" class="btn btn-inline btn-default btn-sm"
+data-toggle="modal"><i class="fa fa-edit"></i> Change</a>
+
+<br><br>
+<label><b>Participants</b> (<%= group.participants.length %>)</label>
+<div class="panel panel-default">
+  <div class="panel-heading">Group #<%= numGroup +1 %></div>
+  <div class="panel-body">
+    <table class="table evalParticipants">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Born</th>
+          <th>Gender</th>
+          <th>Languages</th>
+          <th>#Ratings</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="groupParticipants<%=numGroup +1%>">
+      </tbody>
+    </table>
+  </div>
+</div>

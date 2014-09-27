@@ -1,0 +1,99 @@
+<!-- Content of the evaluation site // evalTamplate -->
+<div class="titleRect">Evaluations</div>
+<div class="mainContent">
+<div class="scrollableTable">
+<table class="table table-bordered" style="margin-bottom: 0px;">
+        <thead style="background: #f5f5f5;">
+          <tr>
+            <th>Name</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Status</th>
+            <th>Info</th>
+          </tr>
+        </thead>
+        <tbody id="evalhistoryview"></tbody>
+      </table>
+</div>
+</div>
+<div class="hline-condensed"></div>
+<div class="titleRect">Create Evaluation</div>
+<div class="navStep">
+<span class="navStepElem active" id="navStepElem1">1. Settings
+<i class="fa fa-chevron-right"></i>
+</span>
+
+<span class="navStepElem" id="navStepElem2">2. Distribution
+<i class="fa fa-chevron-right"></i>
+</span>
+
+<span class="navStepElem" id="navStepElem3">3. Summary</span>
+</div>
+<div class="mainContent">
+
+<!-- Step One -->
+<div id="step1">
+<div class="row">
+<div class="col-sm-3 form-group">
+    <label><b>Name</b></label>
+    <input type="text" class="form-control" id="evalName">
+</div>
+<div class="col-sm-3 form-group">
+    <label><b>Start Date</b></label>
+    <input type="date" class="form-control" id="evalFrom">
+</div>
+<div class="col-sm-3 form-group">
+    <label><b>End Date</b></label>
+    <input type="date" class="form-control" id="evalTo">
+</div>
+<div class="col-sm-3 form-group">
+    <label><b>#Groups</b></label>
+    <select class="form-control" name="groups" id="numberGroups">
+            <option selected>2</option>
+            <option>3</option>
+            <option>4</option>
+    </select>
+</div>
+</div>
+
+<div id="groupsview">
+
+</div>
+<div class="nextStep btn btn-default btn-sm pull-right">Next <i class="fa fa-chevron-right"></i></div>
+</div>
+
+<!-- Step Two -->
+<div id="step2" style="display: none;">
+<div id="participantsview">
+
+<label><b>Distribute participants by...</b></label>
+<br>
+
+<label><input type="checkbox" class="composition" value="age"> Age</label>
+<br>
+<label><input type="checkbox" class="composition" value="gender"> Gender</label>
+<br>
+<label><input type="checkbox" class="composition" value="lang"> Language</label>
+<br>
+</div>
+<div class="prevStep btn btn-default btn-sm pull-left"><i class="fa fa-chevron-left"></i> Back</div>
+
+<div class="nextStep btn btn-default btn-sm pull-right">Next <i class="fa fa-chevron-right"></i></div>
+</div>
+
+<!-- Step Three -->
+<div id="step3" style="display: none;">
+<h5>The following groups would be generated...</h5>
+<div id="summaryview">
+
+</div>
+<div class="prevStep btn btn-default btn-sm pull-left" id="bStepTwo"><i class="fa fa-chevron-left"></i> Back</div>
+
+<div class="btn btn-primary btn-sm pull-right" id="createEvalFinal" style="display: none;">Create <i class="fa fa-check"></i></div>
+
+<br><br>
+<div id="evalMessage"></div>
+</div>
+
+</div>
+</div>

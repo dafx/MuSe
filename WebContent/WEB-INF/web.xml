@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="MRMS" version="2.5">
+
+	<!-- API -->
+	<display-name>API</display-name>
+	<servlet>
+		<servlet-name>RestService</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>de.mrms.web</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RestService</servlet-name>
+		<url-pattern>/API/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Startup & Shutdown tasks -->
+	<listener>
+		<listener-class>de.mrms.config.Init</listener-class>
+	</listener>
+
+	<!-- Cache control -->
+	<filter>
+		<filter-name>ExpiresFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+		<init-param>
+			<param-name>ExpiresByType image/png</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType image/gif</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType image/jpeg</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType text/html</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType text/css</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType application/javascript</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType application/x-font-ttf</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType application/font-woff</param-name>
+			<param-value>modification plus 2 years</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ExpiresFilter</filter-name>
+		<url-pattern>/API/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<!-- Error pages -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.html</location>
+	</error-page>
+</web-app>

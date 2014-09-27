@@ -1,0 +1,456 @@
+/*
+ * Copyright (C) 2014 University of Freiburg.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	min-width: 700px;
+}
+
+.fa {
+	font-size: 14px;
+}
+
+@media ( min-width : 768px) {
+	#header {
+		margin: 0 auto;
+		width: 730px;
+	}
+}
+
+.menu {
+	margin: 0px;
+	padding: 0px;
+	margin-bottom: 0px;
+	border-bottom: 1px solid #ccc;
+	min-width: 100%;
+}
+
+#topnav {
+	margin: 0px auto;
+	width: 674px;
+}
+
+.content {
+	padding-bottom: 30px;
+	text-align: left;
+	background-color: #fff;
+	min-width: 400px;
+}
+
+.footer {
+	padding: 15px 5px;
+	margin: 20px auto;
+	width: 720px;
+	border-top: 1px solid #ccc;
+	color: #777;
+	border-top: 1px solid #ccc;
+	text-align: center;
+}
+
+.footer-list {
+	list-style: none;
+	padding: 0px;
+}
+
+.footer-list li {
+	float: left;
+	padding-right: 15px;
+}
+
+.hline {
+	border-bottom: 1px solid #ccc;
+	margin-top: 30px;
+}
+
+.hline-condensed {
+	border-bottom: 1px solid #ccc;
+}
+
+.center-divide-line {
+	border-bottom: 1px solid #ccc;
+	margin: 20px 0px;
+}
+
+.center-divide-box {
+	text-align: center;
+	margin-top: -28px;
+	margin-bottom: 10px;
+}
+
+.center-divide-text {
+	color: #ccc;
+	background: #fff;
+	padding: 5px;
+}
+
+.titleRect {
+	background-color: #f5f5f5;
+	margin-bottom: 5px;
+	margin-top: -1px;
+	border-left: 3px solid #428bca;
+	box-shadow: 0px -1px 0px #ccc inset, 0px 1px 0px #ccc inset;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 15px;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: 300;
+	text-transform: uppercase;
+	line-height: 1.4;
+	padding: 10px 0px;
+	border-bottom: 1px solid #ccc;
+	text-transform: uppercase;
+	letter-spacing: -0.04em;
+	text-align: center;
+}
+
+#homeview .title {
+	border: 0px;
+	border-top: 1px solid #ccc;
+	margin-top: 30px;
+}
+
+.help {
+	margin-right: -46px;
+	cursor: pointer;
+	margin-top: -20px;
+	color: #428bca;
+	font-size: 12px;
+}
+
+/* ----------------- Home Tab ---------------------- */
+#loginDialog label {
+	font-weight: bold;
+}
+
+#registerDialog label {
+	font-weight: bold;
+}
+
+/* ----------------- Options Tab ---------------------- */
+canvas {
+	margin: 20px;
+}
+
+.settingsContent {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+/* ----------------- Recommendations Tab ---------------------- */
+input[type="text"], input[type="number"], input[type="password"], input[type="email"],
+	select {
+	width: 100%;
+}
+
+.expl {
+	color: #999;
+	font-size: 11px;
+	width: 300px;
+}
+
+.spotifyColumn {
+	float: left;
+	margin: 0px;
+	height: 80px;
+	width: 80px;
+}
+
+.noTrack {
+	float: left;
+	height: 80px;
+	width: 100%;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.notFoundSong {
+	overflow: hidden;
+	height: 20px;
+}
+
+.infoColumn {
+	float: left;
+	padding-left: 20px;
+	padding-right: 10px;
+	margin: 0px;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-right: 0px;
+	height: 80px;
+	width: 597px;
+}
+
+.playlistPlayer {
+	width: 680px;
+	margin: 0px auto;
+	padding: 10px 0px 0px 0px;
+}
+
+.ratingColumn {
+	float: left;
+	font-size: 16px;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+.nameColumn {
+	float: left;
+	padding: 15px 5px 15px 5px;
+	margin-right: 10px;
+	font-size: 13px;
+	border-right: 1px dotted #ccc;
+	height: 68px;
+	width: 150px;
+	overflow: hidden;
+	font-size: 13px;
+}
+
+.trackRatingBar {
+	float: right;
+}
+
+.progress {
+	width: 100px;
+}
+
+.order {
+	float: left;
+	background-color: #f5f5f5;
+	border: 0px;
+	border-right: 1px dotted #ccc;
+	padding-top: 30px;
+	width: 30px;
+	margin-right: 5px;
+	height: 76px;
+	color: #999;
+	font-size: 16px;
+	font-style: bold;
+}
+
+#messageRecommendationTab {
+	margin: 0px 20px;
+}
+
+/* ----------------- Evaluation ---------------------- */
+#evaluationview select {
+	width: 168px;
+}
+
+#evaluationview .form-group {
+	padding-left: 0px;
+}
+
+.groupContainer {
+	border: 1px solid #ccc;
+	margin-bottom: 15px;
+}
+
+.groupContainer h5 {
+	padding-left: 15px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+}
+
+#evalRecommenders label {
+	width: 200px;
+}
+
+.navStep {
+	margin: 10px auto;
+	width: 265px;
+}
+
+.navStepElem {
+	color: #ccc;
+	margin-left: 2px;
+}
+
+.navStepElem.active {
+	color: #428bca;
+	margin-left: 2px;
+}
+
+.scrollableTable {
+	margin-top: 0px;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+/* ----------------- Additional ---------------------- */
+#retryRecommendation, #retryMetric {
+	text-align: center;
+}
+
+.message {
+	color: #3a87ad;
+	background-color: #d9edf7;
+	border: 1px solid #bce8f1;
+	padding: 9px 10px 9px 10px;
+	margin: 0px auto;
+	text-align: left;
+	font-size: 12px;
+}
+
+/* Custom container */
+.marketing h4 {
+	text-align: center;
+}
+
+.numbering {
+	border: 1px solid #ccc;
+	background: #f5f5f5;
+	height: 24px;
+	width: 24px;
+	position: relative;
+	top: 24px;
+	left: 2px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #333;
+	padding: 1px 6.5px;
+}
+
+.container {
+	max-width: 750px;
+	min-height: 600px;
+}
+
+#trackList {
+	width: 680px;
+	padding-top: 5px;
+	border-right: 3px solid #333;
+	border-bottom: 3px solid #333;
+	margin: 0 auto;
+}
+
+#profileContainer {
+	width: 400px;
+}
+
+.col-sm-fit {
+	margin-right: 0px !important;
+}
+
+.feature {
+	font-size: 76px;
+	color: #428bca;
+	width: 90px;
+	height: 90px;
+	padding-top: 8px;
+	padding-left: 14px;
+	border: 2px solid #428bca;
+}
+
+.error {
+	font-size: 130px;
+	margin: 40px auto;
+	text-align: center;
+	width: 400px;
+}
+
+.info {
+	font-size: 14px;
+	color: #428bca;
+}
+
+#langCheckBox {
+	height: 55px;
+	border: 1px solid #ccc;
+	padding: 4px 12px;
+	overflow-y: scroll;
+}
+
+#langCheckBox label {
+	font-weight: normal;
+}
+
+.stats {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 10px;
+	margin-left: 0px;
+}
+
+.statsValue {
+	font-size: 18px;
+}
+
+.menu-header {
+	font-size: 11px;
+	font-weight: bold;
+	color: #777;
+	text-align: left;
+	text-transform: uppercase;
+	padding-left: 6px;
+}
+
+.mainContent {
+	padding: 15px;
+}
+
+.helpBody {
+	padding: 15px;
+}
+
+.recommendationItem {
+	margin-top: -1px;
+}
+
+.log {
+	margin-top: 15px;
+	height: 500px;
+	overflow-y: auto;
+}
+
+.alert-newcomer {
+	border-color: #ccc;
+	border-width: 0px;
+	border-bottom: 1px solid #ccc;
+	font-size: 14px;
+}
+
+.progress-newcomer {
+	width: 50%;
+	height: 18px;
+}
+
+.datenschutz {
+	color: #737373;
+	font-size: 11px;
+}
+
+#ratingBar {
+	height: 136px;
+	background: #fff;
+	z-index: 99999;
+	padding: 16px 0px 0px 0px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	text-align: center;
+}
+
+#listRating {
+	display: inline;
+	margin: 0px 10px;
+}

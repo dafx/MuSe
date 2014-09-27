@@ -1,0 +1,78 @@
+<!-- Content of the recommendations tab -->
+
+<!-- Evaluation message -->
+<% if(eval == 'Y') { %>
+<div id="evalMsg" class="alert alert-newcomer">
+    <h4><i class="ion-stats-bars" style="font-size: 32px;"></i> Evaluation Phase</h4>
+    <p>
+      You are taking part in an Evaluation phase until <%= duration %>.
+  <% if(newcomer == true && newcomerRatings < 15){%>
+      To initiate the evaluation phase we need 15 ratings.
+      </p>
+    <center>
+    <span style="float: right; color: #428bca; font-size: 13px;"> <%= newcomerRatings %>/15 Ratings </span>
+    <div class="progress progress-newcomer">
+      <div class="progress-bar bar-newcomer" style="width: <%= newcomerRatings/15 * 100%>%;"></div>
+    </div>
+    </center>
+  <%}  if(newcomer == true && newcomerRatings > 15){%>
+    <center>
+    <h5>
+      <i class="ion-checkmark-circled" style="font-size: 25px; color: green;"></i>
+      Good job! You have completed the initiation phase of the evaluation.
+    </h5>
+    </center>
+    <p>As from tomorrow you will get recommendations from our newly invented techniques.</p>
+  <%}%>
+<div class="btn btn-link btn-xs" id="quitEvalButton">Quit Evaluation</div>
+<div id="quitMessage"></div>
+</div>
+<% } %>
+
+<!-- Newcomer message -->
+<div id="newcomerMsg" <% if(newcomer == false || eval == 'Y'){%> style="display:none;" <%}%> class="alert alert-newcomer">
+    <h4><i class="ion-compass" style="font-size: 25px;"></i> Welcome to MuSe!</h4>
+    <p style="font-size: 14px;">
+      Since this is your first time with MuSe we need you to rate at least 15 songs.
+      This way we get to know your taste in music and as from tomorrow your recommendations will be personalized to fit your taste!
+    </p>
+<center>
+  <% if(newcomerRatings < 15){%>
+    <span style="float: right; color: #428bca; font-size: 13px;"> <%= newcomerRatings %>/15 Ratings </span>
+    <div class="progress progress-newcomer">
+      <div class="progress-bar bar-newcomer" style="width: <%= newcomerRatings/15 * 100%>%;"></div>
+    </div>
+  <%} else {%>
+    <h5>
+      <i class="ion-checkmark-circled" style="font-size: 25px; color: green;"></i>
+      Good job! As from tomorrow your recommendations will be tailored to your taste.
+    </h5>
+  <%}%>
+</center>
+</div>
+
+<!-- Table of recommendations -->
+<div id="optsChanged" <% if(changed == true){%> style="display:none;" <%}%>  class="alert alert-success">
+<h4>You have changed your settings</h4>
+<p>Want to get a new list with adjusted settings?
+</p><center><div id="refreshButton" class="btn btn-default btn-sm">Reload</div></center></div>
+<div id="recOut" style="display:none;" class="alert alert-info">
+<h4>No more recommendations for today</h4>
+<p>Sorry, you have fetched all your recommendations for today. Come back tomorrow to get new and even better recommendations. </p></div>
+
+<div style="height:130px; width: 680px; margin: 0px auto;">
+<div id="ratingBar">
+    <!-- List rating -->
+    How much do you like this list?
+    <div id="listRating"></div>
+    <div class="btn btn-primary btn-sm" id="sendButton">Submit</div>
+    <div id="trackPlayer"></div>
+</div>
+</div>
+
+<div id="trackList">
+</div>
+
+<!-- Controls and messages -->
+<br>
+<div id="messageRecommendationTab"></div>

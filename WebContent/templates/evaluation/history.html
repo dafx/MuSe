@@ -1,0 +1,15 @@
+<tr <% if(running ===  "current") { %>class="warning" <% } %>>
+  <td><%= name %></td>
+  <td><%= from %></td>
+  <td><%= to %></td>
+  <% if(running ===  "current") { %>
+  <td><b>Running</b></td>
+  <td><a href="#evaluation?details=<%=evaluationId %>">Details</a></td>
+  <% } else if(running === "finished") { %>
+  <td><i class="fa fa-check-circle"></i> Finished</td>
+  <td><a href="#evaluation?details=<%=evaluationId %>">Results</a></td>
+  <% } else if(running === "scheduled") { %>
+  <td><i class="fa fa-calendar-o"></i> Scheduled</td>
+  <td><a href="#evaluation?details=<%=evaluationId %>">Details</a></td>
+  <%} %>
+</tr>

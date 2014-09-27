@@ -1,0 +1,8 @@
+<div class="playlistPlayer">
+  <% if(!tracksLoaded){ %>
+        <center><img src='img/loader.gif' style='margin-top: 10px;'></img><center>
+  <% } else if(tracksLoaded){ %>
+        <iframe src="https://embed.spotify.com/?uri=spotify:trackset:Recommendations:<%= urls %>"
+                width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>
+  <% } %>
+</div>
