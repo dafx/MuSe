@@ -1,4 +1,4 @@
-# MRMS test
+# MRMS
 
 One important issue in the development of recommender systems is a thorough and significant evaluation of the proposed algorithm. However, some aspects of recommending music are inherently subjective, such as serendipity, and thus the evaluation of such algorithms can only be done in vivo, i.e. with real users not in an artificial environment.
 
