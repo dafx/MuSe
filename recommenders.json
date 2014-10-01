@@ -2,41 +2,41 @@
 		{
 			"id" : 6,
 			"status" : 1,
-			"classpath" : "de.mrms.recommendation.recommenders.content.ContentBasedRecommender",
+			"classpath" : "de.muse.recommendation.recommenders.content.ContentBasedRecommender",
 			"filepath" : "",
 			"name" : "Content Based"
 		},
 		{
 			"id" : 5,
 			"status" : 1,
-			"classpath" : "de.mrms.recommendation.recommenders.charts.NeighborChartsRecommender",
+			"classpath" : "de.muse.recommendation.recommenders.charts.NeighborChartsRecommender",
 			"filepath" : "",
 			"name" : "Neighbor Relations"
 		},
 		{
 			"id" : 7,
 			"status" : 1,
-			"classpath" : "de.mrms.recommendation.recommenders.collaborative.CollaborativeFilteringRecommender",
+			"classpath" : "de.muse.recommendation.recommenders.collaborative.CollaborativeFilteringRecommender",
 			"filepath" : "",
 			"name" : "Collaborative Filtering"
 		},
 		{
 			"id" : 8,
 			"status" : 1,
-			"classpath" : "de.mrms.recommendation.recommenders.hybrid.HybridContentCollaborative",
+			"classpath" : "de.muse.recommendation.recommenders.hybrid.HybridContentCollaborative",
 			"name" : "Hybrid Content Collaborative"
 		},
 		{
 			"id" : 3,
 			"status" : 1,
-			"classpath" : "de.mrms.recommendation.recommenders.charts.CityChartsRecommender",
+			"classpath" : "de.muse.recommendation.recommenders.charts.CityChartsRecommender",
 			"filepath" : "",
 			"name" : "City Charts"
 		},
 		{
 			"id" : 4,
 			"status" : 1,
-			"classpath" : "de.mrms.recommendation.recommenders.charts.TagChartsRecommender",
+			"classpath" : "de.muse.recommendation.recommenders.charts.TagChartsRecommender",
 			"filepath" : "",
 			"name" : "Favorit Tags"
 		} ]
