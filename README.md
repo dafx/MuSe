@@ -14,7 +14,7 @@ Recommender algorithms can be added to the system internally, or plugged in comf
 
    There are 3 property files included. To configure [Log4j](http://logging.apache.org/log4j/) and [Quartz](http://www.quartz-scheduler.org/documentation) take a look at their docs.
    
-   To configure mrms open the file  _app.properties_ in the src directory and provide the missing information, inlcuding a permanent directory which can be **read and written** by the application. Finally move the file  _recommenders.json_ to the specified directory.
+   To configure the application open the file  _app.properties_ in the src directory and provide the missing information, inlcuding a permanent directory which can be **read and written** by the application. Finally move the file  _recommenders.json_ to the specified directory.
 
 ### Step 2. Database schema
 
