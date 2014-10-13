@@ -24,7 +24,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +34,7 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import de.muse.config.RecommenderConfig;
 import de.muse.evaluation.Activity;
 import de.muse.utility.Database;
 
@@ -200,6 +203,18 @@ public class UserData {
 				}.getType();
 				ArrayList<Integer> ids = new Gson().fromJson(
 						result.getString("recommenders"), collectionType);
+
+				// Remove inactive recommender ids
+				Set<Integer> recIds = RecommenderConfig.getActiveRecommenders()
+						.keySet();
+				Iterator<Integer> userIds = ids.iterator();
+				while (userIds.hasNext()) {
+					int id = userIds.next();
+					if (!recIds.contains(id)) {
+						userIds.remove();
+					}
+				}
+
 				opts = new Option(behavior, ids);
 			}
 

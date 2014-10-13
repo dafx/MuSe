@@ -143,6 +143,10 @@ public class RestService {
 			MuseUser user = new MuseUser(name);
 			// Fetch options of the user
 			Option opt = UserData.fetchOptions(name);
+			if (opt.getRecommenders().isEmpty()) {
+				throw new MuseWebException(
+						"Please choose a recommender in the settings.");
+			}
 
 			// Check for evaluation participant
 			int evalId = EvaluationData.getIdForParticipant(name);
@@ -314,6 +318,17 @@ public class RestService {
 	@Path("/removeRecommender")
 	@Consumes(MediaType.TEXT_PLAIN)
 	public void removeRecommender(String recid) {
+		List<String> evals = RecommenderConfig.usedInEvaluations(Integer
+				.valueOf(recid));
+		if (!evals.isEmpty()) {
+			String evalString = "";
+			for (String eval : evals) {
+				evalString += "<li>" + eval + "</li>";
+			}
+			throw new MuseWebException(
+					"Recommender is used in evaluations. <br><ul>" + evalString
+							+ "</ul>.");
+		}
 		try {
 			// Get recommender id
 			int id = Integer.valueOf(recid);
@@ -521,13 +536,13 @@ public class RestService {
 		// Adapt options to Last.fm attribute
 		Option opt;
 		if (!user.getLfmaccount().equals("")) {
-			ArrayList<Integer> ids = new ArrayList<Integer>(Arrays.asList(1, 2,
-					3, 4, 5, 6, 7));
+			ArrayList<Integer> ids = new ArrayList<Integer>(Arrays.asList(3, 4,
+					5, 6, 7));
 			opt = new Option("mixed", ids);
 			user.setOptions(opt);
 		} else {
-			ArrayList<Integer> ids = new ArrayList<Integer>(Arrays.asList(1, 2,
-					3, 6, 7));
+			ArrayList<Integer> ids = new ArrayList<Integer>(Arrays.asList(3, 6,
+					7));
 			opt = new Option("mixed", ids);
 			user.setOptions(opt);
 		}
@@ -895,8 +910,8 @@ public class RestService {
 				// Create NEWCOMER recommendations list with preliminary
 				// NEWCOMER
 				// settings.
-				ArrayList<Integer> recs = new ArrayList<Integer>(Arrays.asList(
-						1, 2, 3));
+				ArrayList<Integer> recs = new ArrayList<Integer>(
+						Arrays.asList(3));
 				UserData.saveOptions("mixed", recs, name);
 				MuseUser user = new MuseUser(name);
 				ListComposer.createRecommendationList(user, "mixed",

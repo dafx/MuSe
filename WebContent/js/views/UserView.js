@@ -519,12 +519,10 @@ define([
         },
 
         logout : function() {
-          // Invalidate Facebook session
-          FB.logout();
           // Destroy all views and clear session
           window.sessionStorage.clear();
           Backbone.history.navigate("home", true);
-          window.location = "/MuSe/seeya.html";
+          window.location = "seeya.html";
         },
 
         changeView : function() {

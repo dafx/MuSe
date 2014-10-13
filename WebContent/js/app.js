@@ -17,12 +17,13 @@ define([ 'jquery', 'underscore', 'backbone', 'router', 'session', 'utils',
 		'views/UserView' ], function($, _, Backbone, Router, Session, Utils,
 		UserView) {
 	var initialize = function() {
-		// window.onerror = function() {
-		// // Clear session & Show exception page
-		// window.sessionStorage.clear();
-		// Backbone.history.navigate("home", true);
-		// window.location = "/MuSe/exception.html";
-		// };
+		 
+        window.onerror = function() {
+		   // Clear session & Show exception page
+		   window.sessionStorage.clear();
+		   Backbone.history.navigate("home", true);
+		   window.location = "exception.html";
+		};
 
 		// Check for mobile devices
 		var mobile = Utils.isMobile();

@@ -246,7 +246,7 @@ var UserModel = Backbone.Model.extend({
 				Session.user.evalParticipant = participant;
 				Session.user.newcomer = newc;
 				Session.user.newcomerRatings = 0;
-				Utils.saveToLocalStorage(Session.user);
+				Session.saveToLocalStorage(Session.user);
 			},
 
 			quitEvaluation : function() {

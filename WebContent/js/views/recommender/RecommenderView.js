@@ -205,12 +205,11 @@ define([
             $(self.anchor).empty();
             self.undelegateEvents();
             new RecommenderView();
-          }).fail(function() {
-            // Render error message
-            Utils.msg("messageRecommendationTab", "danger",
-              "Sending Failed. Please try again.");
-            self.sending = false;
-          });
+          }).fail(function(jqXHR, textStatus, errorThrown) {
+              // Render error message
+              Utils.msg("messageRecommendationTab", "danger", jqXHR.responseText);
+              self.sending = false;
+            });
         }
       });
 

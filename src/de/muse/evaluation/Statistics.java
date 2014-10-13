@@ -763,10 +763,15 @@ public class Statistics {
 			result = stmt.executeQuery(query);
 			while (result.next()) {
 				int recId = result.getInt("recommender_id");
+				
+				// Check if recommender is still available in the system
+				String recName;
 				if (!recommenders.containsKey(recId)) {
-					continue;
+					recName = "Unknown";
+				} else {
+					recName = recommenders.get(recId).getName();
 				}
-				String recName = recommenders.get(recId).getName();
+				
 				if (!recommenderRatingDistribution.containsKey(recName)) {
 					HashMap<Integer, Integer> evalHashMap = new HashMap<Integer, Integer>();
 					evalHashMap.put(0, 0);
@@ -811,12 +816,20 @@ public class Statistics {
 			conn = Database.getConnection();
 			stmt = conn.createStatement();
 
-			// Query for number of males
 			result = stmt.executeQuery(query);
+			HashMap<Integer, Recommender> recommenders = RecommenderConfig
+					.getRecommenders();
 			while (result.next()) {
 				int recId = result.getInt("recommender_id");
-				String recName = RecommenderConfig.getRecommenders().get(recId)
-						.getName();
+
+				// Check if recommender is still available in the system
+				String recName;
+				if (!recommenders.containsKey(recId)) {
+					recName = "Unknown";
+				} else {
+					recName = recommenders.get(recId).getName();
+				}
+
 				meanAbsoluteErrors.put(recName, result.getDouble("MAE"));
 			}
 

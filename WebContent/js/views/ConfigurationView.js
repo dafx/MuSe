@@ -105,7 +105,7 @@ define([ 'jquery', 'underscore', 'backbone', 'session', 'utils',
 				location.reload(true);
 				self.clicked = false;
 			}).fail(function(jqXHR, textStatus, errorThrown) {
-				Utils.error("messageConfiguration", jqXHR);
+				Utils.msg("messageConfiguration", "danger", jqXHR.responseText);
 				self.clicked = false;
 			});
 		},

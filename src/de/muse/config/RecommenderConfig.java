@@ -28,6 +28,9 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,6 +49,8 @@ import com.google.gson.reflect.TypeToken;
 import de.muse.api.DataRepository;
 import de.muse.api.Recommender;
 import de.muse.recommendation.MuseRepository;
+import de.muse.utility.Database;
+import de.muse.web.MuseWebException;
 
 /**
  * Maintain recommender configuration in the system.
@@ -170,6 +175,52 @@ public class RecommenderConfig {
 		// Delete jar file
 		File file = new File(conf.filepath);
 		file.delete();
+	}
+
+	/**
+	 * Check if a recommender was already evaluated.
+	 * 
+	 * @param recommenderId
+	 *            The recommender id to check for
+	 * @return List of evaluation names it was used in
+	 */
+	public static List<String> usedInEvaluations(int recommenderId) {
+		List<String> evals = new ArrayList<String>();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		Gson gson = new Gson();
+
+		try {
+			conn = Database.getConnection();
+
+			// Get evaluation recommender settings
+			stmt = conn
+					.prepareStatement("SELECT name, settings_recommenders FROM Evaluation JOIN Evaluation_Groups ON id= eval_id");
+			result = stmt.executeQuery();
+
+			// Check if the recommender is used in any of the evaluations
+			while (result.next()) {
+				String name = result.getString("name");
+				String settings = result.getString("settings_recommenders");
+				int[] ids = gson.fromJson(settings, int[].class);
+				// Search for the given recommender id
+				for (int i = 0; i < ids.length; i++) {
+					if (ids[i] == recommenderId && !evals.contains(name)) {
+						evals.add(name);
+					}
+				}
+			}
+
+		} catch (SQLException e) {
+			throw new MuseWebException("Database not reachable.");
+		} finally {
+			Database.quietClose(result);
+			Database.quietClose(stmt);
+			Database.quietClose(conn);
+		}
+
+		return evals;
 	}
 
 	/**

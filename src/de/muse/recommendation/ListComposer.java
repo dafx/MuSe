@@ -22,9 +22,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,17 +66,6 @@ public class ListComposer {
 	public static void createRecommendationList(MuseUser user, String behavior,
 			int evalId, ArrayList<Integer> ids) throws SQLException {
 		List<Recommendation> recommendations = new ArrayList<Recommendation>();
-
-		// Remove inactive recommender ids
-		Set<Integer> recIds = RecommenderConfig.getActiveRecommenders()
-				.keySet();
-		Iterator<Integer> idsIterator = ids.iterator();
-		while (idsIterator.hasNext()) {
-			int id = idsIterator.next();
-			if (!recIds.contains(id)) {
-				idsIterator.remove();
-			}
-		}
 
 		// Get available recommenders
 		HashMap<Integer, Recommender> recommenders = RecommenderConfig
